@@ -11,7 +11,10 @@
     "watch": "rollup -c -w",
     "pretest": "npm run build",
     "test": "mocha",
-    "prepublish": "npm test"
+    "prepublish": "npm test",
+    "build-uglify": "rollup -c && uglifyjs build/three.js -cm --preamble \"// threejs.org/license\" > build/three.min.js",
+    "dev": "rollup -c -w",
+    "lint": "eslint src"
   },
   "repository": "itsazzad/hedronet",
   "keywords": [
@@ -31,7 +34,9 @@
     "dist"
   ],
   "homepage": "https://github.com/itsazzad/hedronet#readme",
-  "dependencies": {},
+  "dependencies": {
+    "three": "^0.84.0"
+  },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-plugin-external-helpers": "^6.18.0",
@@ -43,7 +48,11 @@
     "mocha": "^3.2.0",
     "rollup": "^0.37.0",
     "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-eslint": "^3.0.0",
     "rollup-plugin-istanbul": "^1.1.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^2.5.0"
   }
 }
